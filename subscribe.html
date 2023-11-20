@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="images/png" href="images/logo.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Easepay</title>
+    
+</head>
+<body>
+    <nav>
+        <a href="index.html"><h4 class="logo">MUTUAL <span>BENEFITS</span></h4></a>
+
+        <ul>
+            <li><a href="subscribe.html" class="active">Sign In </a></li>
+        </ul>
+    </nav>
+    <div class="main-container">
+        <div class="sub-container" data-aos="fade-up">
+            <div class="sub-col1">
+                <div class="alert">Incorrect Card Details !</div>
+                <h3>Subsription</h3>
+                <form id='checkoutForm' class='checkoutForm'>
+                    <div>
+                        <p>Email address</p>
+                        <input id='email' class="input" type="email" placeholder="Enter your email address"/>
+                    </div>
+    
+                    <div>
+                        <p>Credit Card Number</p>
+                        <input id='ccNumber' class="input" type="number" placeholder="XXXX XXXX XXXX XXXX"/>
+                    </div>
+                    <p>Expiry Date</p>
+                    <div class="inputs">
+                    <div>
+                        
+                        <input id='exMonth' class="input" type="number" placeholder="MM"/>
+                    </div>
+                    <div>
+                        <input id='exYear' class="input" type="number" placeholder="YY"/>
+                    </div>
+                    </div>
+                    <div>
+                        <p>Cvv</p>
+                        <input id='bbb' class="input" type="number" placeholder="XXX"/>
+                    </div>
+                    <div>
+                    <label class="cus"><input type="checkbox"/> Save card for next time ?</label>
+                    </div>
+                    
+                    <button type='submit' onclick="submitForm2()">Subscribe Now</button>
+    
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <footer class="prev-foot">
+        <hr />
+        <div class="subber">
+            <p>&copy; 2023 Mutual Benefits</p>
+            <a href="https://doc-hosting.flycricket.io/mutualbenefits/b85cec96-aa34-4408-8e10-08b917a8e4a3/privacy"><p>privacy policy</p></a>
+        </div>
+    </footer>   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./Mail.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>
+
