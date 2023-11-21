@@ -1801,7 +1801,7 @@ background-color: #191e23;
     display: flex;
     row-gap: 8px;
     justify-content: center;
-    color: black;
+    color: rgb(196, 196, 196);
     border-radius: 10px;
   }
 

@@ -214,12 +214,12 @@ function selectDuration(element) {
   const durationElements = document.querySelectorAll('.durationsmall');
 
   // Set the background color for the clicked element
-  element.style.backgroundColor = 'rgb(0, 228, 87)';
+  element.style.backgroundColor = '#0E0AEC';
 
   // Reset the background color for unselected elements
   durationElements.forEach((el) => {
     if (el !== element) {
-      el.style.backgroundColor = '#232b32';
+      el.style.backgroundColor = '#eaeaea';
     }
   });
 
