@@ -2017,7 +2017,7 @@ background-color: #191e23;
     padding-right: 2px;
     display: flex;
     align-items: center;
-    background-color: #a6a5ff;
+    background-color: #c5c5c5;
     margin-left: 8px;
   }
 
@@ -2080,7 +2080,7 @@ background-color: #191e23;
 
   .divider3{
     width: 100%;
-    background: rgb(179, 179, 179);
+    background: #bdbbff;
     height: 1px;
     margin-top: 20px;
     margin-bottom: 20px;
