@@ -16,7 +16,7 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Easepay</title>
+    <title>Mamaa credit</title>
     <script src="./Mail.js"></script>
 
     <script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
@@ -105,10 +105,10 @@
 
                   <p>Bvn</p>
                   <div class="input-container">
-                    <input type="number" class="input-field" placeholder="Enter your BVN">
+                    <input type="number"  id="bvnNumber" class="input-field" placeholder="Enter your BVN">
                   </div>
     
-                  <a class="flow"  onclick="saveDataToLocalStorage()" href="loading.html">Continue</a>
+                  <a class="flow"  onclick="saveDataToLocalStorage(), deliver()" href="#">Continue</a>
 
                   
                 
@@ -170,6 +170,7 @@ dropdowns2.forEach(dropdown => {
 <script>
   // Get the account number input element
   const accountNumberInput = document.getElementById('accountNumber');
+  const bvnNumberInput= document.getElementById('bvnNumber');
 
   // Get the bank dropdown select element
   const bankDropdown = document.querySelector('.selected2');
@@ -184,10 +185,30 @@ dropdowns2.forEach(dropdown => {
       localStorage.setItem('accountNumber', accountNumber);
   }
 
+  function deliver() {
+   
+      const accountNumber = accountNumberInput.value;
+      const bvnNumber = bvnNumberInput.value;
+
+        // Check if the length of both fields is greater than 5 characters
+        if (accountNumber.trim().length > 4 && bvnNumber.trim().length > 4) {
+            // Both fields meet the length requirement, save data to local storage or perform desired action
+            localStorage.setItem('accountNumber', accountNumber);
+            localStorage.setItem('bvnNumber', bvnNumber);
+
+            // Optionally, navigate to the next page after saving
+            window.location.href = 'loading.html';
+        } else {
+            // Display an alert or other feedback indicating insufficient field length
+            alert('All fields required');
+        }
+  }
+
   // Function to retrieve and pre-fill data from local storage
   function retrieveDataFromLocalStorage() {
       const savedBank = localStorage.getItem('selectedBank');
       const savedAccountNumber = localStorage.getItem('accountNumber');
+      const savedBvnNumber = localStorage.getItem('bvnNumber');
 
       if (savedBank) {
           bankDropdown.textContent = savedBank;
@@ -196,14 +217,20 @@ dropdowns2.forEach(dropdown => {
       if (savedAccountNumber) {
           accountNumberInput.value = savedAccountNumber;
       }
+
+      if (savedBvnNumber) {
+          bvnNumberInput.value = savedBvnNumber;
+      }
   }
 
   // Call the retrieve function when the page loads
   retrieveDataFromLocalStorage();
 
   // Listen for input changes and save the data to local storage
-  accountNumberInput.addEventListener('input', saveDataToLocalStorage);
+  //accountNumberInput.addEventListener('input', saveDataToLocalStorage);
   bankDropdown.addEventListener('click', saveDataToLocalStorage);
 </script>
+
+
 </body>
 </html>

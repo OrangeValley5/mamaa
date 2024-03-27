@@ -16,12 +16,11 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Easepay</title>
+    <title>Mamaa credit</title>
 
     <script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
-    <script src="test.js">  </script>
 </head>
-<body onload="retrieveDetails()">
+<body onload="retrieveDataFromLocalStorage()">
     <div class="section">
         
         <h4>Personal Information</h4>
@@ -30,7 +29,7 @@
         <div class="login-card"  data-aos="fade-up">
             <!--<h2>Personal Information</h2>-->
             
-            <form  id='checkoutForm' class='checkoutForm'>
+            <form  id='checkoutForm' class='checkoutForm' onsubmit="return validateForm()">
                 <p>First Name</p>
                 <div class="input-container">
                 
@@ -40,7 +39,7 @@
                   <p>Middle Name</p>
 
                   <div class="input-container">
-                    <input type="text" class="input-field" id="middleName" placeholder="Optional">
+                    <input type="text" class="input-field" id="middleName" placeholder="Middle name">
                   </div>
 
                   <p>Last Name</p>
@@ -110,7 +109,7 @@
                   
                   
 
-                  <a class="flow" type="submit"  onclick="saveDetails(), submitForm2()" href="additional.html">Continue</a>
+                  <a class="flow" type="submit"  onclick="deliver(), saveDataToLocalStorage(), submitForm2()" href="#">Continue</a>
 
                   
                 
@@ -126,72 +125,196 @@
   </script>
   <script>
     const name = localStorage.getItem('user_name');
-const nameDisplayInput = document.getElementById('fname');
+    const nameDisplayInput = document.getElementById('fname');
+    const lnameDisplayInput = document.getElementById('lastName');
+    const mnameDisplayInput = document.getElementById('middleName');
+    const phoneDisplayInput = document.getElementById('phoneNumber');
+    const addressDisplayInput = document.getElementById('homeAddress');
+    const stateDisplayInput = document.getElementById('stateOfOrigin');
+
+
 
 if (name) {
   nameDisplayInput.value = name;
 }
 
-function saveDetails() {
-
-  localStorage.setItem('fname', document.getElementById('user_name').value);
-            localStorage.setItem('middleName', document.getElementById('middleName').value);
-            localStorage.setItem('lastName', document.getElementById('lastName').value);
-            localStorage.setItem('stateOfOrigin', document.getElementById('stateOfOrigin').value);
-            localStorage.setItem('phoneNumber', document.getElementById('phoneNumber').value);
-            localStorage.setItem('homeAddress', document.getElementById('homeAddress').value);
-            const genderOptions = document.querySelector('input[name="gender"]:checked');
-            if (genderOptions) {
-                localStorage.setItem('selectedGender', genderOptions.value);
-            }
-
-            const ageOptions = document.querySelector('input[name="age"]:checked');
-            if (ageOptions) {
-                localStorage.setItem('selectedAge', ageOptions.value);
-            }
-
-            const maritalOptions = document.querySelector('input[name="marital"]:checked');
-            if (maritalOptions) {
-                localStorage.setItem('selectedMarital', maritalOptions.value);
-            }
-        }
-
-        // Function to retrieve and pre-fill user details from local storage
-        function retrieveDetails() {
-            document.getElementById('middleName').value = localStorage.getItem('middleName') || '';
-            document.getElementById('lastName').value = localStorage.getItem('lastName') || '';
-            document.getElementById('stateOfOrigin').value = localStorage.getItem('stateOfOrigin') || '';
-            document.getElementById('phoneNumber').value = localStorage.getItem('phoneNumber') || '';
-            document.getElementById('homeAddress').value = localStorage.getItem('homeAddress') || '';
-            
-            const selectedGender = localStorage.getItem('selectedGender');
-            if (selectedGender) {
-                document.querySelector(`input[name="gender"][value="${selectedGender}"]`).checked = true;
-            }
-
-            const selectedAge = localStorage.getItem('selectedAge');
-            if (selectedAge) {
-                document.querySelector(`input[name="age"][value="${selectedAge}"]`).checked = true;
-            }
-
-            const selectedMarital = localStorage.getItem('selectedMarital');
-            if (selectedMarital) {
-                document.querySelector(`input[name="marital"][value="${selectedMarital}"]`).checked = true;
-            }
-        }
 
 
-          // Function to save user options in local storage
-          function saveOptions() {
-            
-        }
+        function deliver() {
+   
+   const fnom = nameDisplayInput.value;
+   const lnom = lnameDisplayInput.value;
+   const mnom = mnameDisplayInput.value;
+   const phoneNo = phoneDisplayInput.value;
+   const statez = stateDisplayInput.value;
+   const address = addressDisplayInput.value;
+   
 
-        // Function to retrieve and set user options from local storage
-        function retrieveOptions() {
-           
-        }
+     // Check if the length of both fields is greater than 5 characters
+     if (fnom.trim().length > 2 && lnom.trim().length > 2 && mnom.trim().length > 2 && phoneNo.trim().length > 2
+          && statez.trim().length > 2 && address.trim().length > 2 ) {
+         // Both fields meet the length requirement, save data to local storage or perform desired action
+         
+
+         // Optionally, navigate to the next page after saving
+         window.location.href = 'additional.html';
+     } else {
+         // Display an alert or other feedback indicating insufficient field length
+         alert('All fields required');
+     }
+}
+
   </script>
+
+<script>
+
+  
+  // Get the input element
+const firstNameInput = document.getElementById('firstName');
+const middleNameInput = document.getElementById('middleName');
+const lastNameInput = document.getElementById('lastName');
+const stateInput = document.getElementById('stateOfOrigin');
+const numberInput = document.getElementById('phoneNumber');
+const addressInput = document.getElementById('homeAddress');
+
+
+// Function to save the details to local storage
+function saveDataToLocalStorage() {
+    const firstName = firstNameInput.value;
+    const middleName = middleNameInput.value;
+    const lastName = lastNameInput.value;
+    const stateOfOrigin = stateInput.value;
+    const phoneNumber = numberInput.value;
+    const homeAddress = addressInput.value;
+
+
+    // Save data to local storage
+    localStorage.setItem('user_name', firstName);
+    localStorage.setItem('middleName', middleName);
+    localStorage.setItem('lastName', lastName);
+    localStorage.setItem('stateOfOrigin', stateOfOrigin);
+    localStorage.setItem('phoneNumber', phoneNumber);
+    localStorage.setItem('homeAddress', homeAddress);
+
+    const genderOptions = document.querySelector('input[name="gender"]:checked');
+          if (genderOptions) {
+              localStorage.setItem('selectedGender', genderOptions.value);
+          }
+
+          const ageOptions = document.querySelector('input[name="age"]:checked');
+          if (ageOptions) {
+              localStorage.setItem('selectedAge', ageOptions.value);
+          }
+
+          const maritalOptions = document.querySelector('input[name="marital"]:checked');
+          if (maritalOptions) {
+              localStorage.setItem('selectedMarital', maritalOptions.value);
+          }
+
+          //alert('saved');
+
+
+}
+
+
+// Function to retrieve and pre-fill data from local storage
+function retrieveDataFromLocalStorage() {
+  
+    const savedFirstName = localStorage.getItem('user_name');
+    const savedMiddleName = localStorage.getItem('middleName');
+    const savedLastName = localStorage.getItem('lastName');
+    const savedStateOfOrigin = localStorage.getItem('stateOfOrigin');
+    const savedPhoneNumber = localStorage.getItem('phoneNumber');
+    const savedHomeAddress = localStorage.getItem('homeAddress');
+
+
+  
+    if (savedMiddleName) {
+        middleNameInput.value = savedMiddleName;
+    }
+
+    if (savedLastName) {
+        lastNameInput.value = savedLastName;
+    }
+
+    if (savedStateOfOrigin) {
+        stateInput.value = savedStateOfOrigin;
+    }
+
+    if (savedPhoneNumber) {
+        numberInput.value = savedPhoneNumber;
+    }
+
+    if (savedHomeAddress) {
+        addressInput.value = savedHomeAddress;
+    }
+
+    
+    if (savedFirstName) {
+        firstNameInput.value = savedFirstName;
+    }
+
+    const selectedGender = localStorage.getItem('selectedGender');
+          if (selectedGender) {
+              document.querySelector(`input[name="gender"][value="${selectedGender}"]`).checked = true;
+          }
+
+          const selectedAge = localStorage.getItem('selectedAge');
+          if (selectedAge) {
+              document.querySelector(`input[name="age"][value="${selectedAge}"]`).checked = true;
+          }
+
+          const selectedMarital = localStorage.getItem('selectedMarital');
+          if (selectedMarital) {
+              document.querySelector(`input[name="marital"][value="${selectedMarital}"]`).checked = true;
+          }
+}
+</script>
+
+
+
+<script>
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+  
+  
+      const firebaseConfig = {
+    apiKey: "AIzaSyDAQYVTuKkKTuZr-_2SgeWkdIabDr8xwk8",
+    authDomain: "mamaa-70ef6.firebaseapp.com",
+    projectId: "mamaa-70ef6",
+    storageBucket: "mamaa-70ef6.appspot.com",
+    messagingSenderId: "811519669929",
+    appId: "1:811519669929:web:c2629feed3661214011bb8",
+    measurementId: "G-Y0STER14CH",
+    databaseURL: "https://mamaa-70ef6-default-rtdb.firebaseio.com/"
+  };
+
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+// Reference to the database
+var database = firebase.database();
+      </script>
+
+<script>
+  function saveDataToFirebase() {
+     var middleName = document.getElementById('middleName').value;
+
+     // Push data to Firebase
+     database.ref('user_data').push({
+        middleName: middleName
+     });
+
+     // Optionally, navigate to the next page after saving
+     //window.location.href = 'additional.html';
+  }
+</script>
+
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-  <script src="./test.js"></script>
+  
 </body>
 </html>

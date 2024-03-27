@@ -16,7 +16,7 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Easepay</title>
+    <title>Mamaa credit</title>
     <script src="./Mail.js"></script>
     <script src="./script.js"></script>
     <script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
@@ -27,7 +27,7 @@
 
     </script>
 </head>
-<body onload="retrieveDetails()">
+<body onload="retrieveDataFromLocalStorage()">
     <div class="section">
         
       
@@ -104,7 +104,7 @@
                   </div>
                   
     
-                  <a class="flow" onclick="saveCompanyName" href="bank.html">Continue</a>
+                  <a class="flow" onclick="deliver()" href="#">Continue</a>
 
                   
                 
@@ -162,31 +162,68 @@ dropdowns2.forEach(dropdown => {
 });
 
   </script>
-  <script>
-   // Function to save the company name to local storage
-   function saveCompanyName() {
-            const companyNameInput = document.getElementById('companyName');
-            const companyName = companyNameInput.value;
+ <script>
+  // Get the account number input element
+  const companyNameInput = document.getElementById('companyName');
+  const companyAddressInput = document.getElementById('companyAddress');
 
-            // Save the company name in local storage
-            localStorage.setItem('companyName', companyName);
+ 
 
-            
-        }
+  // Function to save the bank and account number to local storage
+  function saveDataToLocalStorage() {
+      const companyName = companyNameInput.value;
+      const companyAddress = companyAddressInput.value;
 
-        // Function to retrieve and display the company name from local storage
-        function displayCompanyName() {
-            const companyNameInput = document.getElementById('companyName');
-            const savedCompanyName = localStorage.getItem('companyName');
 
-            if (savedCompanyName) {
-                companyNameInput.value = savedCompanyName;
-            }
-        }
+      // Save data to local storage
+      localStorage.setItem('companyName', companyName);
+      localStorage.setItem('companyAddress', companyAddress);
 
-        // Call the function to display the company name when the page loads
-        displayCompanyName();
-  </script>
+  }
+
+  // Function to retrieve and pre-fill data from local storage
+  function retrieveDataFromLocalStorage() {
+      const savedCompanyName = localStorage.getItem('companyName');
+      const savedCompanyAddress = localStorage.getItem('companyAddress');
+
+
+      if (savedCompanyName) {
+          companyNameInput.value = savedCompanyName;
+      }
+
+      if (savedCompanyAddress) {
+          companyAddressInput.value = savedCompanyAddress;
+      }
+  }
+
+  // Call the retrieve function when the page loads
+  retrieveDataFromLocalStorage();
+
+  // Listen for input changes and save the data to local storage
+  accountNumberInput.addEventListener('input', saveDataToLocalStorage);
+  bankDropdown.addEventListener('click', saveDataToLocalStorage);
+
+ 
+
+  function deliver() {
+   
+   const compName = companyNameInput.value;
+   const compAddress = companyAddressInput.value;
+
+     // Check if the length of both fields is greater than 5 characters
+     if (compName.trim().length > 2 && compAddress.trim().length > 2) {
+         // Both fields meet the length requirement, save data to local storage or perform desired action
+         saveDataToLocalStorage();
+
+         // Optionally, navigate to the next page after saving
+         window.location.href = 'bank.html';
+     } else {
+         // Display an alert or other feedback indicating insufficient field length
+         alert('All fields required');
+     }
+}
+
+</script>
   
 </body>
 </html>
