@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 *{
     box-sizing: border-box;
     margin: 0px;
@@ -8,7 +10,7 @@
 
 body{
     margin: 0px;
-    font-family: 'Poppins';
+    font-family: "DM Sans";
 }
 
 .container{
@@ -16,13 +18,15 @@ body{
 }
 
 nav{
-    background-color: #ffffff;
     color: black;
     display:  flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     padding: 4rem 6rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust opacity here */
+
 }
 nav span{
     color: rgb(36, 32, 255);
@@ -99,8 +103,9 @@ nav a{
 }
 
 .col2 h2{
-    margin-bottom: 45px;
+    margin-bottom: 10px;
     font-size: 40px;
+    color: #161616;
 }
 
 .labels{
@@ -129,6 +134,7 @@ nav a{
 
 .col2 input{
     margin-right: 5px;
+    font-family: "DM Sans";
 }
 
 .col1 button{
@@ -147,10 +153,10 @@ nav a{
 }
 
 .sub-section{
-    margin-top: 10rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-    background: #0e0aec;
+    background: #ffffff;
     padding: 2rem;
 }
 
@@ -190,11 +196,11 @@ color: #000;
 .sub-section-col .circle{
     width: 80px;
     height: 80px;
-    background-color: white;
+    background-color: rgb(1, 0, 70);
     border-radius: 50%;
     margin-bottom: 10px;
     display: flex;
-    color: #030032;
+    color: #ffffff;
     justify-content: center;
     align-items: center;
 }
@@ -208,13 +214,14 @@ color: #000;
 
 .sub-section-col p{
     text-align: center;
-    color: #d9d9d9;
+    color: #606060;
     font-size: 14px;
 }
 
 
 .section2{
     padding: 40px 15rem;
+    background-color: #f6f6f6;
 }
 
 .section2-row{
@@ -2447,6 +2454,7 @@ background-color: #191e23;
     padding: 10px 20px;
     background-color: rgb(36, 32, 255);
     color: white;
+    font-family: "DM Sans";
     border: none;
     height: 60px;
     cursor: pointer;
@@ -2606,4 +2614,40 @@ background-color: #191e23;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+  }
+
+  .background-image {
+    position: relative;
+    width: 100%; /* Adjust as needed */
+    height: 100vh; /* Adjust as needed */
+    background-image: url('https://img.freepik.com/free-photo/elegant-attractive-muslim-woman-using-mobile-laptop-searching-online-shopping-information-living-room-home-portrait-happy-woman-purchasing-product-via-online-shopping-pay-using-credit-card_657921-979.jpg?t=st=1711880163~exp=1711883763~hmac=e5a07d64320e42b29c3639b7399f940d4b7fc8bd8144812012b77cda5ce77ccc&w=740'); /* Replace with your image link */
+    background-size: cover; /* Adjust to cover the div */
+    background-position: center; /* Center the background image */
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust opacity here */
+    backdrop-filter: blur(0px); /* Adjust blur here */
+  }
+
+  .background-image h1{
+    font-size: 52px;
+    font-weight: bold;
+    font-family: "DM Sans";
+    color: #ffffff;
+    align-self: flex-end;
+  }
+
+  .background-image p{
+    font-family: "DM Sans";
+    color: #ffffff;
+    font-weight: lighter;
   }
